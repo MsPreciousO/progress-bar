@@ -40,20 +40,15 @@ const nextBtn = document.querySelector('.next');
     // console.log (nextBtn)
 const prevBtn = document.querySelector('.prev');
     // console.log (prevBtn)
-// const actives = document.querySelectorAll('.active');
 
 let currentActive = 0;
-
-// let activeTracker = currentActive;
 
     nextBtn.addEventListener('click', () => {
         currentActive++;
         // console.log (currentActive);
     if (currentActive > circles.length){
-            // activeTracker = circles.length;
             currentActive = circles.length;
         }
-        // console.log (activeTracker);
         update ();
 });
 
@@ -61,17 +56,14 @@ let currentActive = 0;
         currentActive--;
     // console.log(currentActive);
     if (currentActive > circles.length){
-            // activeTracker = circles.length;
             currentActive = circles.length;
     }
-    // console.log(activeTracker);
     update();
 });
 
 function update (){
     let actives = [];
     circles.forEach((element, index) => {
-        // what do mean when you say check for documentation
         if(index < currentActive){
             // add the element to each class active
             element.classList.add('active');
@@ -79,7 +71,6 @@ function update (){
         }else{
             element.classList.remove('active')
         }
-        // progress.setAttribute('style','width:' +(actives.length -1)/(circles.length -1)*100 + '%' );
         progress.style.width = (actives.length -1)/(circles.length -1)*100 + '%';
     })
     if(actives.length >= 4){
@@ -88,6 +79,9 @@ function update (){
     }else if(actives.length <= 1) {
         prevBtn.disabled = true;
         nextBtn.removeAttribute('disabled');
+    }else{
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
     }
 }
    
